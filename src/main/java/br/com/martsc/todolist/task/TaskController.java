@@ -7,7 +7,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -109,59 +108,5 @@ public class TaskController {
         var taskUpdated = this.taskRepository.save(task);
         return ResponseEntity.ok().body(taskUpdated);     
     }
-
-    /**
-     * Deleta uma tarefa
-     */
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(TaskModel task, @PathVariable UUID id, HttpServletRequest request) {
-        
-        /**
-         * Procura a tarefa pelo ID informado
-         */
-        var taskSearch = taskRepository.findById(id);
-
-        /**
-         * Verifica se a tarefa esta presente 
-         */
-        if (taskSearch.isPresent()) {
-            
-            /**
-             * Obtém a tarefa caso esteja presente
-             */
-            var taskFound = taskSearch.get();
-
-            var idUser = request.getAttribute("idUser");
-
-            /**
-             * Verifica se ID de usuário da tarefa é igual ao ID de usuário da requisição
-             */
-            if (taskFound.getIdUser().equals(idUser)) {
-                /**
-                 * Remove tarefa do repositório
-                 */
-                taskRepository.delete(taskFound);
-
-                /**
-                 * Retorna status OK (200) pois o usuário é o proprietário da tarefa
-                 */
-                return ResponseEntity.ok().body("Tarefa removida com sucesso.");
-            } else {
-                /**
-                 * Retorna status UNAUTHORIZED (401) pois o usuário não é o proprietário da tarefa
-                 */
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body("Você não tem permissão para excluir essa tarefa.");
-            }
-
-
-        }
-
-        /**
-         * Retorna status NOT FOUND (404) pois a tarefa não foi encontrada
-         */
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-        .body("Tarefa não encontrada.");
-    }
-
+    
 }
