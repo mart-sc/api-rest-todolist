@@ -13,13 +13,13 @@ Projeto de API Rest de um Gerenciador de tarefas, desenvolvido em Java utilizand
 3. Startar a aplicação: ```mvn spring-boot:run``` <br>
 
 ## Rest Client
-Para testar a API é necessário um Cliente Rest, como o API Dog ou Postman.
+Para testar a API é necessário um Cliente Rest, como o API Dog ou Postman. <br>
 OBS: Algumas requisições é necessário passar uma Autenticação com o Cliente Rest (Auth)
 
-[GET]  -  LISTAR USUÁRIOS: http://localhost:8080/users/
-[GET]  -  BUSCAR USUÁRIO POR USERNAME: http://localhost:8080/users/{username}
-[POST] -  ADICIONAR USUÁRIO: http://localhost:8080/users/  (Requer Autenticação)
+[GET]  -  LISTAR USUÁRIOS: http://localhost:8080/users/ <br>
+[GET]  -  BUSCAR USUÁRIO POR USERNAME: http://localhost:8080/users/{username} <br>
+[POST] -  ADICIONAR USUÁRIO: http://localhost:8080/users/  (Requer Autenticação) <br><br>
 
-[GET]  -  LISTAR TAREFAS DE UM USUÁRIO: http://localhost:8080/tasks/  (Requer Autenticação)
-[POST] -  ADICIONAR NOVA TAREFA: http://localhost:8080/tasks/  (Requer Autenticação)
-[PUT]  -  ALTERAR TAREFA: http://localhost:8080/tasks/{id}  (Requer Autenticação)
+[GET]  -  LISTAR TAREFAS DE UM USUÁRIO: http://localhost:8080/tasks/  (Requer Autenticação) <br>
+[POST] -  ADICIONAR NOVA TAREFA: http://localhost:8080/tasks/  (Requer Autenticação) <br>
+[PUT]  -  ALTERAR TAREFA: http://localhost:8080/tasks/{id}  (Requer Autenticação) <br>
